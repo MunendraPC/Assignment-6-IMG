@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bly4nf1tykhgr"]
+
+[ext_resource type="Script" uid="uid://dqshic1ijjbi7" path="res://Area2d.cs" id="1_dl81w"]
+[ext_resource type="PackedScene" uid="uid://bddqxhqpmkyon" path="res://animated_sprite_2d.tscn" id="1_gf172"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl81w"]
+radius = 6.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_dl81w")
+
+[node name="Apple" parent="." instance=ExtResource("1_gf172")]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_dl81w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
